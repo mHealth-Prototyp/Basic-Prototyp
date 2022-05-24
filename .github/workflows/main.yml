@@ -9,9 +9,10 @@ jobs:
   build_and_deploy: # deploys app as single page app to the github pages by building app, git checkout gh-pages and pushing the generated files there.
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2 # provides access tokens to access repository with git
+    - uses: actions/checkout@v3 # provides access tokens to access repository with git
       with:
         fetch-depth: 0 # makes ci fetch complete history for all commits etc
+        token: ${{ secrets.GH_TOKEN }}
         
     - name: Setup git user
       run: |
