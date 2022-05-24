@@ -32,7 +32,7 @@ do
 done
 
 # Move dist folder content to root
-cp -r -f dist/* ./
+cp -r -f dist/spa/* ./
 rm -r dist
 ls -la
 
