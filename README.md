@@ -2,7 +2,7 @@
 
 The purpose of this app is to demonstrate  mHealth use cases related to the Swiss electronic health record.
 
-- Try out the latest version of this webapp: http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/ (use `test@e.id` with passwort `test` for mock login).
+- Try out the latest version of this webapp: https://mhealth-prototyp.github.io/Basic-Prototyp/ (use `test@e.id` with passwort `test` for mock login).
 
 ## Content Table
 - [1 EPD Playground](#1-epd-playground)
@@ -70,12 +70,12 @@ Following codes are listed in the fhirUtils class:
 - [DocumentEntry.practiceSettingCode](https://fhir.ch/ig/ch-epr-term/ValueSet-DocumentEntry.practiceSettingCode.html) (is mapped to DocumentReference.practiceSetting) as PRACTICE_SETTING_CODES
 
 ## 3 Components
-The mHealth prototype app consists of encapsulated components for typically needed functions, which can be easily reused in other apps based on the same technology stack. All components take use of a utils class [epdPlaygroundUtils.ts](../src/utils/epdPlaygroundUtils.ts) which implements the core functions to access the EPD Playground / Mobile Access Gateway using mHealth profiles.
+The mHealth prototype app consists of encapsulated components for typically needed functions, which can be easily reused in other apps based on the same technology stack. All components take use of a utils class [epdPlaygroundUtils.ts](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/utils/epdPlaygroundUtils.ts) which implements the core functions to access the EPD Playground / Mobile Access Gateway using mHealth profiles.
 
 Following components are currently available:
 
 ### 3.1 Document Search
-[DocumentSearch.vue](../src/components/DocumentSearch.vue)
+[DocumentSearch.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/DocumentSearch.vue)
 
 #### Description
 
@@ -99,7 +99,7 @@ Loads & displays documents that belong to a patient.
 - found-document: Make available selected document to parent component e.g. for download or display. Emitted when the user selects a document from the search result list.
 
 ### 3.2 Document Upload
-[DocumentUpload.vue](../src/components/DocumentUpload.vue)
+[DocumentUpload.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/DocumentUpload.vue)
 
 #### Description
 
@@ -120,7 +120,7 @@ Provides UI to describe a document with meta data and uploads it.
 - upload-result: Notify parent component about upload result. Emitted after successful upload of document bundle.
 
 ### 3.3 Local Patients
-[LocalPatients.Vue](../src/components/LocalPatients.vue)
+[LocalPatients.Vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/LocalPatients.vue)
 
 #### Description
 
@@ -141,7 +141,7 @@ Generates & displays random local patients for use in app and upload to EPD Play
 - select-patient: Notify parent component about selected patient. Emitted when the user selects a patient from the list.
 
 ### 3.4 Login Mock
-[LoginMock.vue](../src/components/LoginMock.vue)
+[LoginMock.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/LoginMock.vue)
 
 #### Description
 
@@ -160,7 +160,7 @@ Mocks the login to the platform with a token displayed in the UI.
 - message: Notify parent component about token message to display. Emitted when mocked message for 2FA is "sent".
 
 ### 3.5 Patient Search
-[PatientSearch.vue](../src/components/PatientSearch.vue)
+[PatientSearch.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/PatientSearch.vue)
 
 #### Description
 
@@ -180,7 +180,7 @@ Searches & displays patients on the EPD Playground.
 - found-patient: Notify parent component about found patient data. Emitted when user selects a patient from the search result list.
 
 ### 3.6 Patient View
-[PatientView.vue](../src/components/PatientView.vue)
+[PatientView.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/PatientView.vue)
 
 #### Description
 
@@ -201,7 +201,7 @@ Shows patient details including documents. Also provides functionality to edit p
 - edited-patient: Notifies parent components about updated patient. Emitted after successful upload of patient data.
 
 ### 3.7 Register Patient
-[RegisterPatient.vue](../src/components/RegisterPatient.vue)
+[RegisterPatient.vue](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/src/components/RegisterPatient.vue)
 
 #### Description
 
@@ -260,7 +260,7 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### 5.1 GitHub Pages
 
-When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](../.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/.
+When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): https://mhealth-prototyp.github.io/Basic-Prototyp/.
 
 Things to consider:
 
@@ -270,7 +270,7 @@ Depending on your ssh token permissions you may only be able to edit files in th
 
 ### Check publicPath
 
-When the app is served in a subdirectory (in this case: epd-use-case-prototypen), you need to set the variable "publicPath" in [quasar.conf.js](../quasar.conf.js) to the name of the subdirectory (the default value corresponds to your repository name).
+When the app is served in a subdirectory (in this case: epd-use-case-prototypen), you need to set the variable "publicPath" in [quasar.conf.js](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/quasar.conf.js) to the name of the subdirectory (the default value corresponds to your repository name).
 
 ### Enable GitHub Pages
 
@@ -280,7 +280,7 @@ When the app is served in a subdirectory (in this case: epd-use-case-prototypen)
 
 ### Check default branch
 
-Make sure the name of your default branch is listed as trigger in the [main.yml file](../.github/workflows/main.yml). Currently it uses the branch "main" to trigger the "build_and_deploy" job.
+Make sure the name of your default branch is listed as trigger in the [main.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/main.yml). Currently it uses the branch "main" to trigger the "build_and_deploy" job.
 
 ### Enable HTTPS
 
