@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -29,10 +29,11 @@ jobs:
       run: |
         cp -r dist/spa/* dist
         rm -r dist/spa
+
     - name: Checkout gh-pages branch
       run: git checkout gh-pages
 
-    - name: Remove old and unneccessary files
+    - name: Remove old and unneccessary files (including hidden files)
       run: |
         shopt -s dotglob # enable hidden files
         for file in ./*
@@ -45,11 +46,13 @@ jobs:
               rm -rf "$file"
             fi
         done
+
     - name: Move dist folder content to root
       run: |
         cp -r -f dist/* ./
         rm -r dist
         ls -la
+  
     - name: Add files to commit
       run: git add -A
 
