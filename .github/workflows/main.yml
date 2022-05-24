@@ -13,6 +13,7 @@ jobs:
       with:
         fetch-depth: 0 # makes ci fetch complete history for all commits etc
         token: ${{ github.token }}
+        persist-credentials: false
         
     - name: Setup git user
       run: |
