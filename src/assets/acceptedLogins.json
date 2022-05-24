@@ -1,0 +1,17 @@
+[
+  {
+    "username": "donald@duck.ch",
+    "password": "quack",
+    "phone": "076 111 22 33",
+    "givenName": "Donald",
+    "familyName": "Duck"
+  },
+  {
+    "username": "test@e.id",
+    "password": "test",
+    "phone": "079 123 45 67",
+    "givenName": "Marianne",
+    "familyName": "Loser",
+    "prefix": "Dr. med."
+  }
+]
