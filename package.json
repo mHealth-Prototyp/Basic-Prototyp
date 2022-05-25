@@ -1,6 +1,6 @@
 {
   "name": "mhealth-proto",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prototype app for demonstrating mHealth use cases on EPD Playground",
   "productName": "mHealth Prototyp",
   "author": "medinf.i4mi@bfh.ch",

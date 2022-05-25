@@ -177,12 +177,19 @@ export function useITI67(_params: Partial<iti67Params>): Promise<DocumentReferen
  */
 export function useITI68(_reference: DocumentReference | string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const link =
-      typeof _reference === 'string'
-        ? _reference
-        : _reference.content.find((c) => c.attachment && c.attachment.url)
-            ?.attachment.url;
-    if (link && link.indexOf('http') === 0) {
+    let link = typeof _reference === 'string'
+      ? _reference
+      : _reference.content.find((c) => c.attachment && c.attachment.url)?.attachment.url;
+
+    if (link && (link.indexOf('http') === 0)) {
+      // when app runs on https, all links should be https or browsers will block them
+      // Note: apparently EPD Playground generates http links for document attachment URLs
+      if (location.protocol == 'https:' && link.indexOf('https') !== 0) {
+        // app is on https, and link doesn't start with https
+        // so we change the link to https
+        link = 'https' + link.substring('http'.length, link.length);
+      }
+
       const xhr = new XMLHttpRequest();
       xhr.open(HttpMethod.GET, encodeURI(link), true);
 
