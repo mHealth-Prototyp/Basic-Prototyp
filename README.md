@@ -293,4 +293,5 @@ Go to the issue site of the repository. [github.com](https://github.com/mHealth-
 
 | Version     | Date        | Changes     |
 | ----------- | ----------- | ----------- |
+| 1.0.1       | 25-05-2022  | - Hotfix: Download of file was not working when app running on https.<br />- Added version number to About page. |
 | 1.0.0       | 23-05-2022  | Initial version |

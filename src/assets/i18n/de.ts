@@ -69,7 +69,8 @@ export default {
   about: {
     title: 'Über den mHealth Prototypen',
     aboutText: 'Dieser mHealth Prototyp entstand im Rahmen eines Projektes von eHealth Suisse und dem Institut für Medizininformatik I4MI der Berner Fachhochschule. Er soll als Anschauungsobjekt und Beispielimplementierung eines Zugangs zum EPD Playground dienen, einer bewusst niederschwellig erstellten Test-Instanz des eidgenössischen Patientendossiers EPD. ',
-    readMore: 'Unter den folgenden Links erfahren Sie mehr zu den Projektpartnern, zum elektronischen Patientendossier und zum EPD Playground:'
+    readMore: 'Unter den folgenden Links erfahren Sie mehr zu den Projektpartnern, zum elektronischen Patientendossier und zum EPD Playground:',
+    version: 'Version:'
   },
   layout: {
     title: 'mHealth Prototyp',
