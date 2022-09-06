@@ -2,7 +2,7 @@
 
 The purpose of this app is to demonstrate  mHealth use cases related to the Swiss electronic health record.
 
-- Try out the latest version of this webapp: http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/ (use `test@e.id` with passwort `test` for mock login).
+- Try out the latest version of this webapp: https://mhealth-prototyp.github.io/Basic-Prototyp/ (use `test@e.id` with passwort `test` for mock login).
 
 ## Content Table
 - [1 EPD Playground](#1-epd-playground)
@@ -84,7 +84,7 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### 5.1 GitHub Pages
 
-When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](../.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/.
+When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): https://mhealth-prototyp.github.io/Basic-Prototyp/.
 
 Things to consider:
 
