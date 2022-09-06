@@ -113,11 +113,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import fhirpath from 'fhirpath';
-import { createFhirOrganization, FACILITY_CLASS_CODES, PRACTICE_SETTING_CODES, SystemCodeExtension } from 'src/utils/fhirUtils';
+import { FACILITY_CLASS_CODES, PRACTICE_SETTING_CODES, SystemCodeExtension } from '@i4mi/mhealth-proto-components';
 import { APP_LANGUAGES, AVAILABLE_LANGUAGES } from '../boot/i18n'
 
 export default defineComponent({
-  name: 'Settings',
+  name: 'SettingsPage',
   data() {
     return ({
       language: APP_LANGUAGES.DE,     // set language
@@ -153,7 +153,7 @@ export default defineComponent({
       this.oids.local = this.orgOid;
       try {
         this.$store.setOids(this.oids);
-        const org = createFhirOrganization(
+        const org = this.$fhirUtils.createFhirOrganization(
           this.orgName,
           {
             system: this.orgOid

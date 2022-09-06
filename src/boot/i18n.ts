@@ -1,5 +1,5 @@
 import { boot } from 'quasar/wrappers';
-import { FhirUtilLanguageType } from 'src/utils/fhirUtils';
+import { FhirUtilLanguageType } from '@i4mi/mhealth-proto-components';
 import { createI18n } from 'vue-i18n';
 
 /**

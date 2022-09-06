@@ -1,23 +1,35 @@
 <template>
 <div>
   <q-card class="register-card">
-    <q-card-section class="card-title">{{$t('register.localPatients')}}</q-card-section>
+    <q-card-section class="card-title">
+      {{$t('register.localPatients')}}
+    </q-card-section>
     <q-card-section>
       <p>{{$t('register.selectLocal')}}</p>
       <LocalPatients  @select-patient="selectPatient"
+                      @generated-patients="storeGeneratedPatients"
                       :localIdSystem="localIdSystem"
                       :options="{numberOfRandomPatients:10}"
-                      :translations="patientListTranslations"/>
+                      :translations="patientListTranslations"
+                      :epdPlaygroundUtils="$epdUtils"
+                      :patientUtils="$patientUtils"
+      />
     </q-card-section>
   </q-card>
 
   <q-card class="register-card">
-    <q-card-section class="card-title">{{$t('register.registerPatient')}}</q-card-section>
+    <q-card-section class="card-title">
+      {{$t('register.registerPatient')}}
+    </q-card-section>
     <q-card-section>
       <RegisterPatient :patient="patient"
                        :translations="registerPatientTranslations"
                        :localIdSystem="localIdSystem"
-                       @uploaded-patient="uploadedPatient"/>
+                       @uploaded-patient="uploadedPatient"
+                       :epdPlaygroundUtils="$epdUtils"
+                       :patientUtils="$patientUtils"
+                       :settings="$store.getSettings()"
+      />
     </q-card-section>
   </q-card>
 
@@ -27,14 +39,13 @@
 </template>
 
 <script lang="ts">
-import { Identifier, Patient } from '@i4mi/fhir_r4';
 import { defineComponent } from 'vue';
-import RegisterPatient from 'src/components/RegisterPatient.vue';
-import LocalPatients from '../components/LocalPatients.vue'
+import { Identifier, Patient } from '@i4mi/fhir_r4';
+import { LocalPatients, RegisterPatient } from '@i4mi/mhealth-proto-components';
 
 export default defineComponent({
   name: 'NewPatient',
-  components: { RegisterPatient, LocalPatients, },
+  components: { RegisterPatient, LocalPatients },
   data() {
     return ({
       patientListTranslations: {},
@@ -47,6 +58,7 @@ export default defineComponent({
         urn: 'urn:oid:2.16.756.5.30.1.178.1.1',
         display: 'Klinik Höheweg'
       },
+      localPatients: new Array<Patient>()
     });
   },
   methods: {
@@ -60,6 +72,9 @@ export default defineComponent({
         this.patient.pat = pat;
         this.patient.pat.identifier?.push(ahv as Identifier);
       }
+    },
+    storeGeneratedPatients(pats: Patient[]) {
+      this.$store.setLocalPatients(pats);
     }
   },
   beforeMount() {
@@ -106,6 +121,7 @@ export default defineComponent({
       doneMessage: this.$t('register.doneRegistering'),
       errorMessage: this.$t('register.errorRegistering'),
     }
+    this.localPatients = this.$store.getLocalPatients();
   }
 });
 </script>

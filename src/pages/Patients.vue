@@ -1,31 +1,35 @@
 <template>
   <q-card class="patients-card">
-    <q-card-section class="card-title">{{$t('patients.title')}}</q-card-section>
+    <q-card-section class="card-title">
+      {{$t('patients.title')}}
+    </q-card-section>
     <q-card-section>
       <PatientSearch v-if="!patient.id"
                      @found-patient="onFoundPatient"
                      :localIdSystem="localIdSystem"
                      :translations="patientSearchComponentTranslations"
+                     :epdPlaygroundUtils="$epdUtils"
       />
       <PatientView v-else
                    :patient="patient"
-                   :locale="$i18n.locale || 'de-CH'"
                    :options="patientViewOptions"
                    @edited-patient="onEdit"
                    :translations="patientViewComponentTranslations"
+                   :epdPlaygroundUtils="$epdUtils"
+                   :settings="$store.getSettings()"
+                   :fhirUtils="$fhirUtils"
       />
     </q-card-section>
   </q-card>
 </template>
 
 <script lang="ts">
-import { Patient } from '@i4mi/fhir_r4';
 import { defineComponent } from 'vue';
-import PatientView from '../components/PatientView.vue';
-import PatientSearch from '../components/PatientSearch.vue';
+import { Patient } from '@i4mi/fhir_r4';
+import { PatientSearch, PatientView } from '@i4mi/mhealth-proto-components';
 
 export default defineComponent({
-  name: 'Patients',
+  name: 'PatientsPage',
   components: { PatientView, PatientSearch },
   data() {
     return ({
@@ -77,6 +81,7 @@ export default defineComponent({
       openPrompt1: this.$t('patients.openPrompt1'),
       openPrompt2: this.$t('patients.openPrompt2'),
       addDocumentButton: this.$t('patients.addDocument'),
+      addAllergyButton: this.$t('allergy.addAllergy'),
       uploadSuccessful: this.$t('documents.uploadSuccessful'),
       uploadUnsuccessful: this.$t('documents.uploadUnsuccessful'),
       documentSearchStrings: {
@@ -122,8 +127,89 @@ export default defineComponent({
         jsonFhir: this.$t('documents.jsonFhir'),
         continue: this.$t('common.continue'),
         back: this.$t('common.back')
+      },
+      allergyUploadStrings: {
+        substance: this.$t('allergy.substance'),
+        category: this.$t('allergy.category'),
+        noKnownAllergies: this.$t('allergy.noKnownAllergies'),
+        noKnownAllergiesMoreDetail: this.$t('allergy.noKnownAllergiesMoreDetail'),
+        cancelButtonLabel: this.$t('common.cancel'),
+        uploadButtonLabel: this.$t('allergy.uploadAllergyData'),
+        continue: this.$t('common.continue'),
+        back: this.$t('common.back'),
+        noResults: this.$t('common.noResults'),
+        type: this.$t('allergy.type'),
+        typeTooltip: this.$t('allergy.tooltips.type'),
+        substanceTooltip: this.$t('allergy.tooltips.substance'),
+        categoryTooltip: this.$t('allergy.tooltips.category'),
+        clinicalStatus: this.$t('allergy.clinicalStatus'),
+        clinicalStatusTooltip: this.$t('allergy.tooltips.clinicalStatus'),
+        criticality: this.$t('allergy.criticality'),
+        criticalityTooltip: this.$t('allergy.tooltips.criticality'),
+        verificationStatus: this.$t('allergy.verificationStatus'),
+        verificationStatusTooltip: this.$t('allergy.tooltips.verificationStatus'),
+        dateOfIdentification: this.$t('allergy.dateOfIdentification'),
+        comment: this.$t('allergy.comment'),
+        episode: this.$t('allergy.episode'),
+        metadata: this.$t('documents.metadata'),
+        episodeTableTitle: this.$t('allergy.episodeTableTitle'),
+        manifestation: this.$t('allergy.manifestation'),
+        duration: this.$t('allergy.duration'),
+        reactionSeverity: this.$t('allergy.reactionSeverity'),
+        location: this.$t('allergy.location'),
+        description: this.$t('common.description'),
+        addEpisodeButtonLabel: this.$t('allergy.addEpisodeButtonLabel'),
+        updateEpisodeButtonLabel: this.$t('allergy.updateEpisodeButtonLabel'),
+        deleteEpisodeButtonLabel: this.$t('allergy.deleteEpisodeButtonLabel'),
+        certainty: this.$t('allergy.certainty'),
+        reaction: this.$t('allergy.reaction'),
+        reactionDate: this.$t('allergy.reactionDate'),
+        reactionSubstanceTooltip: this.$t('allergy.tooltips.reactionSubstance'),
+        reactionManifestationTooltip: this.$t('allergy.tooltips.reactionManifestation'),
+        reactionLocationTooltip: this.$t('allergy.tooltips.reactionLocation'),
+        exposure: this.$t('allergy.exposure'),
+        exposureDate: this.$t('allergy.exposureDate'),
+        exposurePath: this.$t('allergy.exposurePath'),
+        exposurePathTooltip: this.$t('allergy.tooltips.exposurePath'),
+        episodeComment: this.$t('allergy.episodeComment'),
+        saveEpisode: this.$t('allergy.saveEpisode'),
+        creatingInstitution: this.$t('documents.creatingInstitution'),
+        creatingInstitutionText: this.$t('allergy.creatingInstitutionText'),
+        institution: this.$t('documents.institution'),
+        specialisation: this.$t('documents.specialisation'),
+        specialisationText: this.$t('allergy.specialisationText'),
+        searchPlaceholder: this.$t('common.search'),
+        fieldRequired: this.$t('common.fieldRequired'),
+        allergicFor: this.$t('allergy.allergicFor'),
+        positiveValuesAllowed: this.$t('common.positiveValuesAllowed'),
+        durationReaction: this.$t('allergy.durationReaction')
+      },
+      allergyViewStrings: {
+        allergy: this.$t('allergy.allergy'),
+        intolerance: this.$t('allergy.intolerance'),
+        typeLabel: this.$t('allergy.typeLabel'),
+        codeDisplayLabel: this.$t('allergy.codeDisplayLabel'),
+        dateLabel: this.$t('common.date'),
+        clinicalStateLabel: this.$t('allergy.clinicalStateLabel'),
+        verificationStateLabel: this.$t('allergy.verificationStateLabel'),
+        reactionLabel: this.$t('allergy.reactionLabel'),
+        reactionsLabel: this.$t('allergy.reactionsLabel'),
+        reactionDateLabel: this.$t('allergy.reactionDateLabel'),
+        reactionSubstanceLabel: this.$t('allergy.reactionSubstanceLabel'),
+        reactionSeverityLabel: this.$t('allergy.reactionSeverityLabel'),
+        reactionDescriptionLabel: this.$t('allergy.reactionDescriptionLabel'),
+        additionalInformation: this.$t('allergy.additionalInformation'),
+        categoryLabel: this.$t('allergy.categoryLabel'),
+        criticalityLabel: this.$t('allergy.criticalityLabel'),
+        noteLabel: this.$t('allergy.noteLabel'),
+        exposureDateLabel: this.$t('allergy.exposureDateLabel'),
+        exposureRouteLabel: this.$t('allergy.exposureRouteLabel'),
+        reactionNoteLabel: this.$t('allergy.reactionNoteLabel'),
+        reactionLocationLabel: this.$t('allergy.reactionLocationLabel'),
+        noOtherDataAvailable: this.$t('allergy.noOtherDataAvailable')
       }
     },
+
     this.patientSearchComponentTranslations = {
       nameInputLabel: this.$t('common.familyName'),
       givenInputLabel: this.$t('common.givenName'),

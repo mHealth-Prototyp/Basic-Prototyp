@@ -59,7 +59,7 @@ function generateCode(length: number): string {
  * Mocks the login to the platform with a token displayed in the UI.
  */
 export default defineComponent({
-  name: 'Login',
+  name: 'LoginMock',
   data() {
     return {
       code: '',

@@ -14,9 +14,9 @@
   <div class="col-6">
     <q-card class="link-card" @click="$router.push('/register')">
       <q-card-section class="card-title">{{ $t('index.localTileTitle') }}</q-card-section>
-      
+
       <q-icon name="fas fa-hospital-user" class="big-icon"/>
-      
+
       <q-card-section>
         <p>{{ $t('index.localTileDescription') }}</p>
       </q-card-section>
@@ -29,7 +29,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'PageIndex',
+  name: 'IndexPage',
   data() {
     return {
 

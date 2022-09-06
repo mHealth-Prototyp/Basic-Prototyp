@@ -23,7 +23,7 @@ import ABOUT_LINKS from '../assets/aboutLinks.json'
 import PACKAGE from '../../package.json'
 
 export default defineComponent({
-  name: 'About',
+  name: 'AboutPage',
   data() {
     return {
       locale: this.$i18n.locale || 'de-CH',

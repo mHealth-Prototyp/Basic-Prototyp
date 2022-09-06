@@ -1,11 +1,11 @@
 <template>
   <router-view v-if="isLoggedIn" />
-  <Login v-else :acceptedLogins="logins" :onLogin="login" @message="displayMessage"/>
+  <LoginMock v-else :acceptedLogins="logins" :onLogin="login" @message="displayMessage"/>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Notify } from 'quasar';
-import Login from './components/LoginMock.vue';
+import LoginMock from './components/LoginMock.vue';
 import { LoginType, UIMessage, UIMessageType } from './model/interfaces';
 import ACCEPTED_LOGINS from './assets/acceptedLogins.json';
 
@@ -14,7 +14,7 @@ const toasts: Function[] = [];
 
 export default defineComponent({
   name: 'App',
-  components: { Login },
+  components: { LoginMock },
   data() {
     return {
       isLoggedIn: false,
