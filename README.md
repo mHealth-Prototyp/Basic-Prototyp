@@ -84,7 +84,7 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### 5.1 GitHub Pages
 
-When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): https://mhealth-prototyp.github.io/Basic-Prototyp/.
+When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [deploy.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/deploy.yml). The static web files produced from the build command is published here (domain pattern automatically generated): https://mhealth-prototyp.github.io/Basic-Prototyp/.
 
 Things to consider:
 
