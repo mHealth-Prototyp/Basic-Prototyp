@@ -1,45 +1,39 @@
 # mHealth Prototyp (mhealth-proto)
 
-The purpose of this app is to demonstrate mHealth use cases related to the Swiss electronic health record.
+The purpose of this app is to demonstrate  mHealth use cases related to the Swiss electronic health record.
 
-- Try out the latest version of this webapp: http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/ (use `test@e.id` with passwort `test` for mock login).
+- Try out the latest version of this webapp: https://mhealth-prototyp.github.io/Basic-Prototyp/ (use `test@e.id` with passwort `test` for mock login).
 
 ## Content Table
-
 - [1 EPD Playground](#1-epd-playground)
   - [1.1 Mobile Access Gateway](#11-mobile-access-gateway)
 - [2 Core functionalities](#2-core-functionalities)
 - [3 Components](#3-components)
 - [4 Build & run app](#4-build-run-app)
 - [5 Automatic deployment & hosting](#5-automatic-deployment-hosting)
-- [5.1 GitHub Pages](#51-github-pages)
+  - [5.1 GitHub Pages](#51-github-pages)
 - [6 Submit issues](#6-submit-issues)
 - [7 Changelog](#7-changelog)
 
 ## 1 EPD Playground
-
 The EPD Playground is a low-threshold "test and play" implementation of a Swiss electronic health record for demonstrating key use cases of mHealth. It is a source of inspiration for developers, managers and healthcare personal in Switzerland. For easier testing, no authentication is needed on the EPD Playground. See more on the [project page of the EPD Playground](https://epdplayground.ch/index.php?title=Main_Page).
 
 ### 1.1 Mobile Access Gateway
-
 The [Mobile Access Gateway](https://epdplayground.ch/index.php?title=Mobile_Access_Gateway) is a FHIR endpoint that allows us to communicate with the EPD Playground using mHealth Profiles.
 
 ## 2 Core functionalities
-
-For accessing core functionalities, the util classes of the [mHealth Component Library](https://gitlab.ti.bfh.ch/epd-uc/component-test-library/) are used.
-
+For accessing core functionalities, the util classes of the [mHealth Component Library](https://github.com/mHealth-Prototyp/Basic-Components) are used.
 - - **epdPlaygroundUtils.ts**: Implements query functions based on FHIR profiles PIXm, PDQm and MHD required for the profile "Mobile access to Health Documents (MHD) by using the [Mobile Access Gateway](https://epdplayground.ch/index.php?title=Mobile_Access_Gateway). For details, see the library's documentation.
 - **fhirUtils.ts**: Provides necessary SNOMED codes in FHIR format, mapping functions and a functionality to create FHIR resources, e.g. Document Bundle. For details, see the library's documentation.
 - **patientUtils**: Provides methods for generating demo patient data. For details, see the library's documentation.
-  Further, following services are available.
+Further, following services are available.
 - **storeService.ts**: Provides functions for saving to local storage, default settings, locale, mockup patients, etc.
 - **i18n.ts**: Handles interationalization. DE (de-CH) is the default and currently only language. Note: Each component has a string interface to be independant from a i18n setup.
 
 ## 3 Components
+The mHealth prototype app consists of encapsulated components for typically needed functions, which can be easily reused in other apps based on the same technology stack. All components take use of the utils provided by the [mHealth Component Library](https://github.com/mHealth-Prototyp/Basic-Components#2-utils).
 
-The mHealth prototype app consists of encapsulated components for typically needed functions, which can be easily reused in other apps based on the same technology stack. All components take use of the utils provided by the [mHealth Component Library](https://gitlab.ti.bfh.ch/epd-uc/component-test-library/-/tree/main#2-utils).
-
-Following components are used. For details concerning these components, see the [library's documentation](https://gitlab.ti.bfh.ch/epd-uc/component-test-library/).
+Following components are used. For details concerning these components, see the [library's documentation](https://github.com/mHealth-Prototyp/Basic-Components).
 
 - **AllergyUpload**: Display a form for entering the data needed for CHAllergyIntolerance profile.
 - **AllergyView**: Display the relevant data from a CHAllergyIntolerance resource.
@@ -90,7 +84,7 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### 5.1 GitHub Pages
 
-When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [main.yml file](../.github/workflows/main.yml). The static web files produced from the build command is published here (domain pattern automatically generated): http://epd-uc.pages.ti.bfh.ch/epd-use-case-prototypen/.
+When hosted on GitHub the app is being automatically deployed to the GitHub Pages by using the GitHub Actions function when a commit on the default branch "main" is performed. Configurations can be made in the [deploy.yml file](https://github.com/mHealth-Prototyp/Basic-Prototyp/blob/main/.github/workflows/deploy.yml). The static web files produced from the build command is published here (domain pattern automatically generated): https://mhealth-prototyp.github.io/Basic-Prototyp/.
 
 Things to consider:
 
@@ -117,7 +111,6 @@ Make sure the name of your default branch is listed as trigger in the [main.yml 
 Follow this documentation (you must be administrator): [Securing your GitHub Pages site with HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https).
 
 ## 6 Submit issues
-
 Go to the issue site of the repository. [github.com](https://github.com/mHealth-Prototyp/Basic-Prototyp/issues)
 
 ## 7 Changelog
