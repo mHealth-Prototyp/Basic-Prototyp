@@ -5,4 +5,4 @@ export const ENV = {
   DEFAULT_TIMEOUT: 20000,
   SOURCE_ENDPOINT: 'http://example.com/patientSource',
   TARGET_ENDPOINT: 'http://example.com/patientEndpoint'
-}
+};

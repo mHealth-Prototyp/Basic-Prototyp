@@ -1,12 +1,16 @@
 <template>
   <router-view v-if="isLoggedIn" />
-  <LoginMock v-else :acceptedLogins="logins" :onLogin="login" @message="displayMessage"/>
+  <LoginMock
+    v-else
+    :acceptedLogins="logins"
+    :onLogin="login"
+    @message="displayMessage" />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { Notify } from 'quasar';
+import {defineComponent} from 'vue';
+import {Notify} from 'quasar';
 import LoginMock from './components/LoginMock.vue';
-import { LoginType, UIMessage, UIMessageType } from './model/interfaces';
+import {LoginType, UIMessage, UIMessageType} from './model/interfaces';
 import ACCEPTED_LOGINS from './assets/acceptedLogins.json';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -14,7 +18,7 @@ const toasts: Function[] = [];
 
 export default defineComponent({
   name: 'App',
-  components: { LoginMock },
+  components: {LoginMock},
   data() {
     return {
       isLoggedIn: false,
@@ -23,32 +27,32 @@ export default defineComponent({
   },
   mounted() {
     this.isLoggedIn = this.$store.getUser() !== undefined;
-
   },
   methods: {
     login(user: LoginType): void {
       this.isLoggedIn = user !== undefined;
       this.$store.setUser(user);
       // hide toasts
-      toasts.forEach(toast => {toast()});
+      toasts.forEach((toast) => {
+        toast();
+      });
     },
     displayMessage(message: UIMessage) {
       switch (message.type) {
         case UIMessageType.SMS:
-         toasts.push(Notify.create(
-            {
+          toasts.push(
+            Notify.create({
               message: message.title,
               caption: message.text,
-              position: 'top-right',
-            }
-          ));
+              position: 'top-right'
+            })
+          );
           break;
         case UIMessageType.ERROR:
           console.warn('ERROR - ' + message.title + ': ' + message.text);
       }
     }
   }
-
 });
 </script>
 

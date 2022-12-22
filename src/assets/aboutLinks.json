@@ -2,25 +2,29 @@
   {
     "url": "https://www.e-health-suisse.ch/startseite.html",
     "label": {
-      "de-CH": "eHealth Suisse"
+      "de-CH": "eHealth Suisse",
+      "fr-CH": "eHealth Suisse"
     }
   },
   {
     "url": "https://www.bfh.ch/de/forschung/forschungsbereiche/institut-medical-informatics-i4mi/",
     "label": {
-      "de-CH": "BFH Institut für Medizininformatik I4MI"
+      "de-CH": "BFH Institut für Medizininformatik I4MI",
+      "fr-CH": "BFH institut pour l'informatique médicale I4MI"
     }
   },
   {
     "url": "https://epdplayground.ch/index.php?title=Main_Page",
     "label": {
-      "de-CH": "EPD Playground"
+      "de-CH": "EPD Playground",
+      "fr-CH": "EPD Playground"
     }
   },
   {
     "url": "https://www.patientendossier.ch/de",
     "label": {
-      "de-CH": "Eidgenössisches Patientendossier EPD"
+      "de-CH": "Eidgenössisches Patientendossier EPD",
+      "fr-CH": "Dossier électronique du patient DEP"
     }
   }
 ]

@@ -1,6 +1,6 @@
-import { Organization, Patient } from '@i4mi/fhir_r4';
-import { APP_LANGUAGES } from 'src/boot/i18n';
-import { LoginType, Settings } from 'src/model/interfaces';
+import {Organization, Patient} from '@i4mi/fhir_r4';
+import {APP_LANGUAGES} from 'src/boot/i18n';
+import {LoginType, Settings} from 'src/model/interfaces';
 
 /**
  * storeService.ts
@@ -60,14 +60,20 @@ export default class Store {
    * Persists the content of the store to sessionStorage.
    */
   private persistToStorage(): void {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
-      user: this.user
-    }));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      localPatients: this.localPatients,
-      settings: this.settings,
-      oids: this.oids
-    }));
+    sessionStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        user: this.user
+      })
+    );
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        localPatients: this.localPatients,
+        settings: this.settings,
+        oids: this.oids
+      })
+    );
   }
 
   /**
@@ -103,7 +109,7 @@ export default class Store {
     return this.settings;
   }
 
-    /**
+  /**
    * Gets the default settings
    * @returns  a set of default settings
    */
@@ -139,7 +145,7 @@ export default class Store {
         code: '394802001',
         display: 'General medicine'
       }
-    }
+    };
   }
 
   /**
@@ -165,13 +171,21 @@ export default class Store {
     if (!_oids.ahv.includes('urn:oid'))
       throw new Error('Provided AHV OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.ahv + ').');
     if (!_oids.eprSpid.includes('urn:oid'))
-      throw new Error('Provided EPR SPID OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.eprSpid + ').');
+      throw new Error(
+        'Provided EPR SPID OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.eprSpid + ').'
+      );
     if (!_oids.mpiId.includes('urn:oid'))
-      throw new Error('Provided MPI ID OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.mpiId + ').');
+      throw new Error(
+        'Provided MPI ID OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.mpiId + ').'
+      );
     if (!_oids.local.includes('urn:oid'))
-      throw new Error('Provided local system OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.local + ').');
+      throw new Error(
+        'Provided local system OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.local + ').'
+      );
     if (!_oids.app.includes('urn:oid'))
-      throw new Error('Provided app system OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.app + ').');
+      throw new Error(
+        'Provided app system OID is not a valid OID, must start with urn:oid. (Provided: ' + _oids.app + ').'
+      );
 
     this.oids = _oids;
     this.persistToStorage();
@@ -226,9 +240,18 @@ export default class Store {
   }
 
   /**
+   * Sets the language.
+   * @param lang the language to set.
+   */
+  setLanguage(lang: APP_LANGUAGES): void {
+    this.settings.language = lang;
+    this.persistToStorage();
+  }
+
+  /**
    * Removes all data from storage.
    */
-   clearAll(): void {
+  clearAll(): void {
     this.user = undefined;
     this.localPatients = [];
     this.settings = this.getDefaultSettings();

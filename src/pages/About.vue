@@ -1,26 +1,34 @@
 <template>
   <q-card class="about-card">
-    <q-card-section class="card-title">{{ $t('about.title') }} ({{ $t('about.version') }} {{ version }})</q-card-section>
+    <q-card-section class="card-title"
+      >{{ $t('about.title') }} ({{ $t('about.version') }} {{ version }})</q-card-section
+    >
     <q-card-section>
       <p>
         {{ $t('about.aboutText') }}
       </p>
       <p>
-       {{ $t('about.readMore') }}
-        <ul>
-          <li v-for="link in links" :key="link.url">
-            <a :href="link.url" target="_blank"> {{ getLocalisedLinkLabel(link , locale)}}</a>
-          </li>
-        </ul>
+        {{ $t('about.readMore') }}
       </p>
+      <ul>
+        <li
+          v-for="link in links"
+          :key="link.url">
+          <a
+            :href="link.url"
+            target="_blank">
+            {{ getLocalisedLinkLabel(link, locale) }}</a
+          >
+        </li>
+      </ul>
     </q-card-section>
   </q-card>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import ABOUT_LINKS from '../assets/aboutLinks.json'
-import PACKAGE from '../../package.json'
+import {defineComponent} from 'vue';
+import ABOUT_LINKS from '../assets/aboutLinks.json';
+import PACKAGE from '../../package.json';
 
 export default defineComponent({
   name: 'AboutPage',
@@ -29,7 +37,7 @@ export default defineComponent({
       locale: this.$i18n.locale || 'de-CH',
       links: ABOUT_LINKS,
       version: ''
-    }
+    };
   },
   methods: {
     /**
@@ -45,5 +53,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
