@@ -20,7 +20,7 @@ pages: # the job must be named pages
     - npm run build
     - cp -r dist/spa/* dist # copy content of spa to higher hirarchy folder
     - rm -r dist/spa # remove spa folder
-    - mv public public-vue # GitLab Pages hooks on the public folder
+    - mv public public-vue # move away public folder into random folder
     - mv dist public # rename the dist folder (result of npm run build)
     # optionally, you can activate gzip support with the following line:
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;

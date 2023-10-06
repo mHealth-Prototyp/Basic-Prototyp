@@ -108,7 +108,7 @@ export default defineComponent({
      * Emitted when mocked message for 2FA is "sent".
      */
     message: (payload: UIMessage) => {
-      return payload.type === 'sms' && payload.title && payload.text;
+      return payload.type === UIMessageType.SMS && payload.title && payload.text;
     }
   },
   props: {
