@@ -10,7 +10,7 @@ import WarningBanner from 'src/components/banners/WarningBanner.vue';
 import InformationBanner from 'src/components/banners/InformationBanner.vue';
 
 const store = new Store();
-const fhirUtils = new FhirUtils(ENV.BASE_URL);
+const fhirUtils = new FhirUtils(ENV.BASE_URL, store.getOids());
 const epdUtils = new EpdPlaygroundUtils(ENV, store.getOids());
 const patientUtils = new PatientUtils(store.getOids(), store.getOrganizationResource());
 const weatherAPIConsumer: WeatherAPIConsumer = new WeatherAPIConsumer();

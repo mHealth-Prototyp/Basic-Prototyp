@@ -5,20 +5,24 @@ The purpose of this app is to demonstrate  mHealth use cases related to the Swis
 - Try out the latest version of this webapp: https://mhealth-prototyp.github.io/Basic-Prototyp/ (use `test@e.id` with passwort `test` for mock login).
 
 ## Content Table
+
 - [1 EPD Playground](#1-epd-playground)
   - [1.1 Mobile Access Gateway](#11-mobile-access-gateway)
 - [2 Core functionalities](#2-core-functionalities)
 - [3 Components](#3-components)
 - [4 Build & run app](#4-build-run-app)
 - [5 Automatic deployment & hosting](#5-automatic-deployment-hosting)
-  - [5.1 GitHub Pages](#51-github-pages)
+- [5.1 GitHub Pages](#51-github-pages)
 - [6 Submit issues](#6-submit-issues)
-- [7 Changelog](#7-changelog)
+- [7 License](#7-license)
+- [8 Changelog](#7-changelog)
 
 ## 1 EPD Playground
+
 The EPD Playground is a low-threshold "test and play" implementation of a Swiss electronic health record for demonstrating key use cases of mHealth. It is a source of inspiration for developers, managers and healthcare personal in Switzerland. For easier testing, no authentication is needed on the EPD Playground. See more on the [project page of the EPD Playground](https://epdplayground.ch/index.php?title=Main_Page).
 
 ### 1.1 Mobile Access Gateway
+
 The [Mobile Access Gateway](https://epdplayground.ch/index.php?title=Mobile_Access_Gateway) is a FHIR endpoint that allows us to communicate with the EPD Playground using mHealth Profiles.
 
 ## 2 Core functionalities
@@ -111,15 +115,22 @@ Make sure the name of your default branch is listed as trigger in the [main.yml 
 Follow this documentation (you must be administrator): [Securing your GitHub Pages site with HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https).
 
 ## 6 Submit issues
-Go to the issue site of the repository. [github.com](https://github.com/mHealth-Prototyp/Basic-Prototyp/issues)
 
-## 7 Changelog
+Go to the issue site of the repository. [github.com](https://github.com/mHealth-Prototyp/Basic-Prototyp/issues).
+
+
+## 7 License
+
+This software is published under the [MIT License](LICENSE).
+
+## 8 Changelog
 
 | Version | Date       | Changes                                                                                                                                                           |
 | ------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.3.1   | 2023-10-05 | - Add license<br /> - Use newest version of component library<br /> - Update other dependencies                                                                   |
 | 1.3.0   | 2022-12-22 | - Add DashboardView for patient's allergy data<br /> - Use newest version of component library<br /> - Update dependencies                                        |
-| 1.2.0   | 2022-09-06 | - Add form for saving CH AllergyIntolerance to a patient record<br />- Add popup window for displaying CHAllergyIntolerance documents<br /> - Update dependencies |
+| 1.2.0   | 2022-09-06 | - Add form for saving CH AllergyIntolerance to a patient record<br /> - Add popup window for displaying CHAllergyIntolerance documents<br /> - Update dependencies |
 | 1.1.1   | 2022-07-20 | Update README and use new version of library.                                                                                                                     |
 | 1.1.0   | 2022-07-19 | Use component library.                                                                                                                                            |
-| 1.0.1   | 2022-05-25 | - Hotfix: Download of file was not working when app running on https.<br />- Added version number to About page.                                                  |
+| 1.0.1   | 2022-05-25 | - Hotfix: Download of file was not working when app running on https.<br /> - Add version number to About page.                                                  |
 | 1.0.0   | 2022-05-23 | Initial version                                                                                                                                                   |
